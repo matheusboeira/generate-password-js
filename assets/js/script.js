@@ -1,3 +1,9 @@
+/**
+ * Bootstrap enable tooltips.
+ */
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
 const inputRange = document.querySelector('#password-length')
 const passwordLengthText = document.querySelector('#password-length-text')
 const inputPassword = document.querySelector('#password')
@@ -47,7 +53,7 @@ const changeSize = () => {
   }
 
   clearClasslist()
-  
+
   if (inputPassword.value.length <= 26) {
     inputPassword.classList.add('font-xl')
   } else if (inputPassword.value.length <= 39) {
