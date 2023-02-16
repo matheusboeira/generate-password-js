@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&family=Roboto&display=swap');
+
+:root {
+  --primary: #009c34;
+  --secondary: #eb5757;
+  --warning: #ffc61c;
+  --slider: #9b51e0;
+}
+
+body {
+	background-color: #f8fafd;
+	font-family: 'Roboto', sans-serif;
+	color: #252525;
+	padding: 2rem;
+}
+
+main {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.hero {
+	text-align: center;
+	padding-bottom: 3rem;
+}
+
+.hero .title {
+	font-size: 2rem;
+	font-weight: bold;
+	padding-bottom: 0.75rem;
+}
+
+.hero .subtitle {
+	font-size: 1.25rem;
+	color: #828282;
+}
+
+.box {
+	background-color: #fff;
+	box-shadow: 0 1px 2px rgba(132, 148, 165, 0.25);
+	border-radius: 0.5rem;
+	margin-bottom: 3rem;
+}
+
+.password {
+	display: flex;
+	align-items: center;
+	padding: 1rem 1.5rem;
+}
+
+.password .text {
+	flex: 1;
+	font-size: 1.25rem;
+	font-weight: bold;
+	color: #252525;
+}
+
+.password .text input {
+	font-family: 'Inconsolata', monospace;
+	font-size: 3rem;
+	border: none;
+	outline: none;
+	height: 3.25rem;
+	width: 100%;
+	transition: all 0.2s ease-in-out;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.password .actions button {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	opacity: 0.7;
+	transition: all 0.2s ease-in-out;
+}
+
+.password .actions button img {
+	width: 2.25rem;
+}
+
+.password .actions button:hover {
+	opacity: 1;
+}
+
+.password .actions button:active {
+	border-radius: 0.5rem;
+	background-color: #d8fffa;
+}
+
+.security-indicator {
+	height: 0.625rem;
+	background-color: #ddd;
+	border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.security-indicator .bar {
+	height: 0.625rem;
+	border-radius: 0 0.5rem 0.5rem 0.5rem;
+	background-color: var(--primary);
+	transition: all 0.2s;
+}
+
+.security-indicator .bar.completed {
+	border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.security-indicator .bar.critical {
+	background-color: var(--secondary);
+}
+
+.security-indicator .bar.warning {
+	background-color: var(--warning);
+}
+
+.security-indicator .bar.safe {
+	background-color: var(--primary);
+}
+
+.customize {
+	padding: 1rem 1.5rem;
+}
+
+.customize .title {
+	border-bottom: 1px solid #f0f0f0;
+	font-size: 1.75rem;
+	font-weight: bold;
+	margin-bottom: 2rem;
+	padding-bottom: 0.75rem;
+}
+
+.customize .actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+}
+
+.customize .password-length {
+  flex: 1;
+}
+
+.customize .password-length .slider {
+  appearance: none;
+  height: 0.625rem;
+  background-color: #ddd;
+  border-radius: 0.5rem;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s ease-in-out;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.customize .password-length .slider:hover {
+  opacity: 1;
+}
+
+.customize .password-length .slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 1.5rem;
+  background: var(--slider);
+  cursor: pointer;
+}
+
+.customize .password-length .slider::-moz-range-thumb {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 1.5rem;
+  background: var(--slider);
+  cursor: pointer;
+}
+
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  cursor: pointer;
+}
+
+.checkbox-container .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.25rem;
+  width: 1.25rem;
+  background-color: #ddd;
+  border-radius: 0.25rem;
+}
+
+.checkbox-container input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: var(--slider);
+}
+
+.checkbox-container .checkmark:after {
+  content: "";
+  display: none;
+  position: absolute;
+  left: 0.5rem;
+  top: 0.2rem;
+  width: 0.3125rem;
+  height: 0.8125rem;
+  border: solid white;
+  border-width: 0 0.1875rem 0.1875rem 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.copy-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copy-button button {
+  background-color: var(--slider);
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.2s ease-in-out;
+  padding: 0.5rem 1rem;
+  color: white;
+  font-size: 1.25rem;
+}
+
+.copy-button button:hover {
+  opacity: 1;
+}
