@@ -19,6 +19,7 @@ const ABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 const abc = "abcdefghijklmnopqrstuvwxyz"
 const numbers = "0123456789"
 const symbols = "!@#$%&*()_+=<>"
+const combinations = ABC + abc + numbers + symbols
 
 /**
  * Array de opções para gerar a senha.
@@ -37,6 +38,9 @@ const copy = () => {
   navigator.clipboard.writeText(inputPassword.value)
 }
 
+/**
+ * Função para alterar o tamanho do texto da senha.
+ */
 const changeSize = () => {
   if (inputPassword.value.length <= 26) {
     inputPassword.style.fontSize = '3rem'
@@ -49,9 +53,55 @@ const changeSize = () => {
   }
 }
 
+/**
+ * Função para calcular a qualidade da senha.
+ */
 const calculateQuality = () => {
-  const quality = Math.floor((inputPassword.value.length / 64) * 100)
+  const inputLength = inputPassword.value.length
+
+  const lengthWeight = (inputLength <= 10 ? 5 : 20)
+  const uppercaseWeight = (inputLength <= 12 ? 5 : 15)
+  const lowercaseWeight = (inputLength <= 10 ? 5 : 10)
+  const numbersWeight = (inputLength <= 4 ? 5 : 25)
+  const symbolsWeight = (inputLength <= 18 ? 5 : 30)
+
+  const quality = Math.floor(
+    (inputLength / 64 * lengthWeight) +
+    (uppercaseCheckbox.checked ? uppercaseWeight : 0) +
+    (lowercaseCheckbox.checked ? lowercaseWeight : 0) +
+    (numbersCheckbox.checked ? numbersWeight : 0) +
+    (symbolsCheckbox.checked ? symbolsWeight : 0)
+  )
+
   securityIndicatorBar.style.width = `${quality}%`
+}
+
+/**
+ * Função para alterar a cor da barra de segurança. 
+ */
+const changeBarColor = () => {
+  const clearClasslist = () => {
+    securityIndicatorBar.classList.remove('critical')
+    securityIndicatorBar.classList.remove('warning')
+    securityIndicatorBar.classList.remove('safe')
+    securityIndicatorBar.classList.remove('completed')
+  }
+
+  clearClasslist()
+  const quality = parseInt(securityIndicatorBar.style.width)
+
+  if (quality === 100) {
+    securityIndicatorBar.classList.add('completed')
+    return
+  }
+
+  if (quality <= 25) {
+    securityIndicatorBar.classList.add('critical')
+  } else if (quality <= 50) {
+    securityIndicatorBar.classList.add('warning')
+  } else {
+    securityIndicatorBar.classList.add('safe')
+  }
 }
 
 /**
@@ -85,6 +135,7 @@ const generatePassword = (length = 16) => {
   inputPassword.value = password
   changeSize()
   calculateQuality()
+  changeBarColor()
 }
 
 /**
@@ -120,10 +171,5 @@ options.forEach(option => {
     generatePassword(inputRange.value)
   })
 })
-
-/**
- * Ajustar o tamanho do texto do input da senha.
- */
-
 
 generatePassword()
