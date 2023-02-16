@@ -252,3 +252,49 @@ main {
 .copy-button button:hover {
   opacity: 1;
 }
+
+.font-sm {
+  font-size: 1.2rem !important;
+}
+
+.font-md {
+  font-size: 1.5rem !important;
+}
+
+.font-lg {
+  font-size: 2rem !important;
+}
+
+.font-xl {
+  font-size: 3rem !important;
+}
+
+@media only screen and (max-width: 500px) {
+  .password {
+    padding: 1rem;
+  }
+
+  .password .text input {
+    font-size: 1.5rem;
+  }
+
+  .password .text input.font-sm {
+    font-size: 1.2rem !important;
+  }
+
+  .password .text input.font-md {
+    font-size: 1rem !important;
+  }
+
+  .password .text input.font-lg {
+    font-size: 1rem !important;
+  }
+
+  .password .text input.font-xl {
+    font-size: 1.2rem !important;
+  }
+
+  .actions button img {
+    width: 1.5rem !important;
+  }
+}

@@ -42,14 +42,20 @@ const copy = () => {
  * Função para alterar o tamanho do texto da senha.
  */
 const changeSize = () => {
+  const clearClasslist = () => {
+    inputPassword.classList.remove('font-sm', 'font-md', 'font-lg', 'font-xl')
+  }
+
+  clearClasslist()
+  
   if (inputPassword.value.length <= 26) {
-    inputPassword.style.fontSize = '3rem'
+    inputPassword.classList.add('font-xl')
   } else if (inputPassword.value.length <= 39) {
-    inputPassword.style.fontSize = '2rem'
+    inputPassword.classList.add('font-lg')
   } else if (inputPassword.value.length <= 52) {
-    inputPassword.style.fontSize = '1.5rem'
-  } else if (inputPassword.value.length <= 64) {
-    inputPassword.style.fontSize = '1.2rem'
+    inputPassword.classList.add('font-md')
+  } else {
+    inputPassword.classList.add('font-sm')
   }
 }
 
@@ -81,10 +87,12 @@ const calculateQuality = () => {
  */
 const changeBarColor = () => {
   const clearClasslist = () => {
-    securityIndicatorBar.classList.remove('critical')
-    securityIndicatorBar.classList.remove('warning')
-    securityIndicatorBar.classList.remove('safe')
-    securityIndicatorBar.classList.remove('completed')
+    securityIndicatorBar.classList.remove(
+      'critical',
+      "warning",
+      "safe",
+      "completed"
+    )
   }
 
   clearClasslist()
