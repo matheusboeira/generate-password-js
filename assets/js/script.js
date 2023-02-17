@@ -198,7 +198,12 @@ inputRange.addEventListener('input', () => {
  */
 generateNewPassword.addEventListener('click', () => {
   generatePassword(inputRange.value)
-  changeTooltips('Gerar nova senha', 'Nova senha gerada! 🎉', '#renew')
+  let newTitle = 'Nova senha gerada! 🎉'
+
+  if (inputPassword.value === SELECT_AT_LEAST_ONE_OPTION) {
+    newTitle = SELECT_AT_LEAST_ONE_OPTION
+  }
+  changeTooltips('Gerar nova senha', newTitle, '#renew')
 })
 
 /**
