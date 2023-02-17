@@ -27,6 +27,8 @@ const numbers = "0123456789"
 const symbols = "!@#$%&*()_+=<>"
 const combinations = ABC + abc + numbers + symbols
 
+const SELECT_AT_LEAST_ONE_OPTION = 'Selecione ao menos uma opção. 🤝'
+
 /**
  * Array de opções para gerar a senha.
  */
@@ -78,6 +80,11 @@ const changeSize = () => {
 
   clearClasslist()
 
+  if (inputPassword.value === SELECT_AT_LEAST_ONE_OPTION) {
+    inputPassword.style.fontSize = '2rem'
+    return
+  }
+
   if (inputPassword.value.length <= 26) {
     inputPassword.classList.add('font-xl')
   } else if (inputPassword.value.length <= 39) {
@@ -119,9 +126,9 @@ const changeBarColor = () => {
   const clearClasslist = () => {
     securityIndicatorBar.classList.remove(
       'critical',
-      "warning",
-      "safe",
-      "completed"
+      'warning',
+      'safe',
+      'completed'
     )
   }
 
@@ -161,8 +168,8 @@ const generatePassword = (length = 16) => {
   })
 
   if (counter === 0) {
-    inputPassword.style.fontSize = '2rem'
-    inputPassword.value = 'Selecione ao menos uma opção. 🤝'
+    inputPassword.value = SELECT_AT_LEAST_ONE_OPTION
+    changeSize()
     return
   }
 
