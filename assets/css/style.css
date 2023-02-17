@@ -8,6 +8,10 @@
   --slider: #9b51e0;
 }
 
+.custom-tooltip {
+  --bs-tooltip-bg: var(--slider);
+}
+
 body {
 	background-color: #f8fafd;
 	font-family: 'Roboto', sans-serif;

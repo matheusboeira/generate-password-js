@@ -38,10 +38,34 @@ const options = [
 ]
 
 /**
+ * Função responsável por alterar o texto do tooltip e depois voltar ao original.
+ * 
+ * @param {*} before Texto antes de ser alterado.
+ * @param {*} after  Texto depois de ser alterado.
+ * @param {*} elementID  ID do elemento HTML que contém o tooltip.
+ */
+const changeTooltips = (before, after, elementID) => {
+  const tooltipElement = document.querySelector(elementID)
+  let tooltip = bootstrap.Tooltip.getInstance(tooltipElement)
+  tooltip.hide()
+
+  tooltipElement.title = after
+  tooltip = new bootstrap.Tooltip(tooltipElement)
+  tooltip.show()
+
+  setTimeout(() => {
+    tooltipElement.title = before
+    tooltip.hide()
+    tooltip = new bootstrap.Tooltip(tooltipElement)
+  }, 2500)
+}
+
+/**
  * Função para copiar a senha gerada para a área de transferência.
  */
 const copy = () => {
   navigator.clipboard.writeText(inputPassword.value)
+  changeTooltips('Copiar senha', 'Copiado! 🎉', '#copy')
 }
 
 /**
@@ -167,6 +191,7 @@ inputRange.addEventListener('input', () => {
  */
 generateNewPassword.addEventListener('click', () => {
   generatePassword(inputRange.value)
+  changeTooltips('Gerar nova senha', 'Nova senha gerada! 🎉', '#renew')
 })
 
 /**
