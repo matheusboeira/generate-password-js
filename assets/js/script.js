@@ -207,13 +207,6 @@ generateNewPassword.addEventListener('click', () => {
 })
 
 /**
- * Alterando o tamanho do texto caso o usuário complemente a senha.
- */
-inputPassword.addEventListener('input', () => {
-  changeSize()
-})
-
-/**
  * Adicionando um evento para identificar quando o usuário marcar
  * ou desmarcar as opções de caracteres e gerar uma nova senha.
  */

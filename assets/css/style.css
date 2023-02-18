@@ -241,22 +241,6 @@ main {
   justify-content: center;
 }
 
-.copy-button button {
-  background-color: var(--slider);
-  border-radius: 0.25rem;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  transition: all 0.2s ease-in-out;
-  padding: 0.5rem 1rem;
-  color: white;
-  font-size: 1.25rem;
-}
-
-.copy-button button:hover {
-  opacity: 1;
-}
-
 .font-sm {
   font-size: 1.2rem !important;
 }
@@ -273,7 +257,28 @@ main {
   font-size: 3rem !important;
 }
 
+.copy-button button {
+  display: none;
+  background-color: var(--slider);
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.2s ease-in-out;
+  padding: 0.5rem 1rem;
+  color: white;
+  font-size: 1.25rem;
+}
+
+.copy-button button:hover {
+  opacity: 1;
+}
+
 @media only screen and (max-width: 500px) {
+  .copy-button button {
+    display: block;
+  }
+
   .password {
     padding: 1rem;
   }
